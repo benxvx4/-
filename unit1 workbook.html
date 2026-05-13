@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Unit 1 Vocabulary – Advanced</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B3A6B;--blue:#2E75B6;--sky:#D6E9F8;--peach:#FDF3E7;--off:#F8F9FA;--gray:#E9ECEF;--dark:#1a1a2e;--muted:#6c757d;--green:#1A7A4A;--red:#C0392B;--shadow:0 4px 24px rgba(27,58,107,0.10);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#f0f4f8;min-height:100vh;color:var(--dark);font-size:15px;line-height:1.65;}
+.header{background:linear-gradient(135deg,var(--navy) 0%,#2a5298 60%,var(--blue) 100%);color:white;padding:36px 20px 28px;text-align:center;}
+.header-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:10px;}
+.header h1{font-family:'Playfair Display',serif;font-size:clamp(22px,5vw,40px);font-weight:900;line-height:1.1;}
+.header-sub{font-size:13px;color:rgba(255,255,255,0.7);margin-top:8px;font-style:italic;}
+.score-pill{display:inline-block;margin-top:14px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:50px;padding:6px 24px;font-size:14px;font-weight:600;}
+.wrapper{max-width:820px;margin:0 auto;padding:24px 14px 80px;}
+.student-card{background:white;border-radius:14px;padding:22px 20px;box-shadow:var(--shadow);margin-bottom:20px;}
+.student-card h2{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);padding-bottom:12px;border-bottom:2px solid var(--sky);margin-bottom:16px;}
+.fields{display:flex;flex-wrap:wrap;gap:14px;}
+.field{flex:1;min-width:160px;}
+.field label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:6px;}
+.field input{width:100%;padding:12px 14px;border:2px solid var(--gray);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:16px;color:var(--dark);outline:none;-webkit-appearance:none;}
+.field input:focus{border-color:var(--blue);}
+.exercise{background:white;border-radius:14px;padding:24px 20px;box-shadow:var(--shadow);margin-bottom:20px;position:relative;}
+.exercise::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,var(--blue),var(--navy));border-radius:4px 0 0 4px;}
+.ex-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
+.ex-number{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--blue);}
+.ex-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--navy);margin-top:2px;}
+.ex-points{font-size:12px;font-weight:600;background:var(--sky);color:var(--navy);padding:4px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;}
+.ex-instruction{font-size:14px;color:var(--muted);background:var(--off);border-radius:8px;padding:12px 16px;margin-bottom:20px;border-left:3px solid var(--sky);}
+.word-bank{background:var(--sky);border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:14px;line-height:1.7;}
+.word-bank strong{color:var(--navy);}
+input[type="text"],input[type="email"],input[type="date"],textarea,select{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--dark);-webkit-appearance:none;appearance:none;}
+.match-row{padding:12px 0;border-bottom:1px solid var(--gray);}
+.match-row:last-child{border-bottom:none;}
+.match-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.match-letter{font-family:'DM Mono',monospace;font-weight:700;font-size:13px;color:var(--blue);min-width:26px;}
+.match-word{font-weight:600;font-size:15px;}
+.match-select{width:100%;padding:11px 14px;border:2px solid var(--gray);border-radius:8px;background:white;font-size:16px;outline:none;cursor:pointer;}
+.match-select:focus{border-color:var(--blue);}
+.q-row{padding:12px 0;border-bottom:1px solid var(--gray);}
+.q-row:last-child{border-bottom:none;}
+.q-num{font-family:'DM Mono',monospace;font-weight:700;font-size:13px;color:var(--blue);margin-bottom:4px;}
+.q-text{font-size:14.5px;line-height:1.8;}
+.iblank{display:inline-block;border:none;border-bottom:2.5px solid var(--blue);min-width:80px;background:transparent;padding:1px 4px;vertical-align:bottom;font-size:15px;text-align:center;outline:none;color:var(--dark);}
+.mc-q{font-size:14.5px;font-weight:600;padding:12px 14px;background:var(--off);border-radius:8px 8px 0 0;margin-top:14px;}
+.mc-opts{border:2px solid var(--gray);border-radius:0 0 8px 8px;overflow:hidden;margin-bottom:4px;}
+.mc-opt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--gray);cursor:pointer;font-size:15px;}
+.mc-opt:last-child{border-bottom:none;}
+.mc-opt input[type="radio"]{width:20px;height:20px;accent-color:var(--blue);flex-shrink:0;}
+.tf-row{padding:14px 0;border-bottom:1px solid var(--gray);}
+.tf-row:last-child{border-bottom:none;}
+.tf-stmt{font-size:14.5px;line-height:1.65;margin-bottom:10px;}
+.tf-btns{display:flex;gap:10px;}
+.tf-btn{flex:1;padding:13px;border-radius:8px;border:2px solid var(--gray);background:white;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;text-align:center;color:var(--muted);-webkit-tap-highlight-color:transparent;}
+.tf-btn.sel-t{background:var(--navy);border-color:var(--navy);color:white;}
+.tf-btn.sel-f{background:#8B2020;border-color:#8B2020;color:white;}
+.wf-row{padding:14px 0;border-bottom:1px solid var(--gray);}
+.wf-row:last-child{border-bottom:none;}
+.wf-tag{display:inline-block;background:var(--navy);color:white;font-family:'DM Mono',monospace;font-size:12px;padding:2px 10px;border-radius:20px;margin-bottom:8px;}
+.sa-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--gray);flex-wrap:wrap;}
+.sa-row:last-child{border-bottom:none;}
+.sa-num{font-family:'DM Mono',monospace;font-weight:700;font-size:13px;color:var(--blue);min-width:22px;}
+.sa-word{font-weight:700;font-size:14.5px;color:var(--navy);min-width:110px;flex-shrink:0;}
+.sa-arr{color:var(--muted);font-size:18px;}
+.sa-inp{flex:1;min-width:140px;padding:11px 12px;border:2px solid var(--gray);border-radius:8px;font-size:16px;outline:none;}
+.sa-inp:focus{border-color:var(--blue);}
+.ws-row{margin-bottom:12px;}
+.ws-tag{display:inline-block;background:var(--blue);color:white;font-weight:700;font-size:13px;padding:5px 14px;border-radius:8px;margin-bottom:6px;font-family:'DM Mono',monospace;}
+.ws-inp{width:100%;padding:12px 14px;border:2px solid var(--gray);border-radius:8px;font-size:16px;outline:none;resize:vertical;min-height:56px;line-height:1.5;}
+.ws-inp:focus{border-color:var(--blue);}
+.passage{background:linear-gradient(135deg,var(--sky),#e8f4fd);border:2px solid rgba(46,117,182,0.2);border-radius:12px;padding:20px;margin-bottom:20px;font-size:14.5px;line-height:1.9;}
+.passage p{margin-bottom:12px;}
+.passage p:last-child{margin-bottom:0;}
+.rq-row{margin-bottom:14px;}
+.rq-q{font-size:14.5px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.rq-inp{width:100%;padding:12px 14px;border:2px solid var(--gray);border-radius:8px;font-size:16px;outline:none;resize:vertical;min-height:64px;line-height:1.5;}
+.rq-inp:focus{border-color:var(--blue);}
+.tr-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--gray);flex-wrap:wrap;}
+.tr-row:last-child{border-bottom:none;}
+.tr-num{font-family:'DM Mono',monospace;font-weight:700;font-size:13px;color:var(--blue);min-width:24px;}
+.tr-heb{font-weight:700;font-size:15px;color:var(--navy);min-width:140px;flex-shrink:0;direction:rtl;}
+.tr-arr{color:var(--muted);font-size:18px;}
+.tr-inp{flex:1;min-width:140px;padding:11px 12px;border:2px solid var(--gray);border-radius:8px;font-size:16px;outline:none;}
+.tr-inp:focus{border-color:var(--blue);}
+.action-bar{background:white;border-radius:14px;padding:22px 20px;box-shadow:var(--shadow);margin-bottom:20px;}
+.action-bar h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--navy);margin-bottom:8px;}
+.action-bar p{font-size:14px;color:var(--muted);margin-bottom:16px;}
+.email-row{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap;}
+.email-inp{flex:1;min-width:200px;padding:12px 14px;border:2px solid var(--gray);border-radius:8px;font-size:16px;outline:none;-webkit-appearance:none;}
+.email-inp:focus{border-color:var(--blue);}
+.action-btns{display:flex;flex-direction:column;gap:10px;}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 20px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:600;cursor:pointer;border:none;width:100%;-webkit-tap-highlight-color:transparent;}
+.btn-primary{background:linear-gradient(135deg,var(--navy),var(--blue));color:white;}
+.btn-green{background:linear-gradient(135deg,#1A7A4A,#2E9E60);color:white;}
+.btn-gold{background:linear-gradient(135deg,#d4a017,#f4c430);color:var(--navy);}
+.btn-sec{background:var(--off);color:var(--navy);border:2px solid var(--gray);}
+#etags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
+.etag{display:inline-flex;align-items:center;gap:6px;background:var(--sky);color:var(--navy);padding:5px 12px;border-radius:20px;font-size:13px;font-weight:500;}
+.etag button{background:none;border:none;cursor:pointer;font-size:16px;color:var(--muted);padding:0;line-height:1;}
+.score-sum{display:none;background:white;border-radius:14px;padding:28px 20px;box-shadow:var(--shadow);margin-bottom:20px;text-align:center;}
+.score-sum.show{display:block;}
+.big-score{font-family:'Playfair Display',serif;font-size:80px;font-weight:900;background:linear-gradient(135deg,var(--navy),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.score-lbl{font-size:16px;color:var(--muted);margin-top:6px;}
+.sbars{display:flex;flex-direction:column;gap:8px;margin-top:20px;text-align:left;}
+.sb-lbl{font-size:12px;font-weight:600;color:var(--muted);margin-bottom:3px;}
+.sb-track{height:8px;background:var(--gray);border-radius:10px;overflow:hidden;}
+.sb-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--blue),var(--navy));transition:width 1s ease;}
+.ok{background:#e6f9ee!important;border-color:var(--green)!important;}
+.bad{background:#fde8e8!important;border-color:var(--red)!important;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--navy);color:white;padding:13px 24px;border-radius:12px;font-size:14px;font-weight:500;box-shadow:0 8px 32px rgba(27,58,107,0.4);opacity:0;transition:all .3s;z-index:9999;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+@media print{.action-bar,.score-sum{display:none!important;}.exercise{box-shadow:none;border:1px solid #ccc;}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-label">Vocabulary Challenge</div>
+  <h1>Unit 1 – Advanced Workbook</h1>
+  <div class="header-sub">a lot of · brother · change · easy · even · everyone · famous · next week · soon · understand</div>
+  <div class="score-pill" id="live-score">Score: 0 / 100</div>
+</div>
+<div class="wrapper">
+
+<div class="student-card">
+  <h2>Student Information</h2>
+  <div class="fields">
+    <div class="field"><label>Full Name</label><input type="text" id="sname" placeholder="Your name" autocomplete="name"></div>
+    <div class="field"><label>Class</label><input type="text" id="sclass" placeholder="e.g. 7B"></div>
+    <div class="field"><label>Date</label><input type="date" id="sdate"></div>
+  </div>
+</div>
+
+<!-- EX 1: MATCH — definitions, not translations -->
+<div class="exercise">
+  <div class="ex-header"><div><div class="ex-number">Exercise 1</div><div class="ex-title">Match: Word to Definition</div></div><div class="ex-points">10 pts</div></div>
+  <div class="ex-instruction">Match each word to its English definition — no Hebrew or Arabic this time!</div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">1.</span><span class="match-word">famous</span></div>
+  <select class="match-select" id="m0" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">2.</span><span class="match-word">soon</span></div>
+  <select class="match-select" id="m1" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">3.</span><span class="match-word">brother</span></div>
+  <select class="match-select" id="m2" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">4.</span><span class="match-word">easy</span></div>
+  <select class="match-select" id="m3" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">5.</span><span class="match-word">even</span></div>
+  <select class="match-select" id="m4" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">6.</span><span class="match-word">everyone</span></div>
+  <select class="match-select" id="m5" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">7.</span><span class="match-word">a lot of</span></div>
+  <select class="match-select" id="m6" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">8.</span><span class="match-word">next week</span></div>
+  <select class="match-select" id="m7" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">9.</span><span class="match-word">understand</span></div>
+  <select class="match-select" id="m8" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+
+  <div class="match-row"><div class="match-top"><span class="match-letter">10.</span><span class="match-word">change</span></div>
+  <select class="match-select" id="m9" onchange="upd()"><option value="">– select –</option>
+  <option>known by many people around the world</option>
+  <option>happening in a short time from now</option>
+  <option>a male who has the same parents as you</option>
+  <option>not difficult at all</option>
+  <option>used to say something surprising is included</option>
+  <option>every single person</option>
+  <option>a large number or amount of something</option>
+  <option>the week that comes after this one</option>
+  <option>to get the meaning of something</option>
+  <option>to become or make something different</option>
+  </select></div>
+</div>
+
+<!-- EX 2: MC — tricky distractors, all words look plausible -->
+<div class="exercise">
+  <div class="ex-header"><div><div class="ex-number">Exercise 2</div><div class="ex-title">Choose the Best Word</div></div><div class="ex-points">10 pts</div></div>
+  <div class="ex-instruction">Only ONE answer fits the meaning of the sentence perfectly. Be careful — all options look possible!</div>
+
+  <div class="mc-q"><strong>1.</strong> The homework was so ___ that I finished it in two minutes.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc0" value="0" onchange="upd()"> a. famous</label><label class="mc-opt"><input type="radio" name="mc0" value="1" onchange="upd()"> b. easy</label><label class="mc-opt"><input type="radio" name="mc0" value="2" onchange="upd()"> c. soon</label></div>
+
+  <div class="mc-q"><strong>2.</strong> I can't ___ why she is angry. She won't explain.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc1" value="0" onchange="upd()"> a. change</label><label class="mc-opt"><input type="radio" name="mc1" value="1" onchange="upd()"> b. drive</label><label class="mc-opt"><input type="radio" name="mc1" value="2" onchange="upd()"> c. understand</label></div>
+
+  <div class="mc-q"><strong>3.</strong> The earthquake destroyed ___ building in the town. Nothing was left.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc2" value="0" onchange="upd()"> a. every</label><label class="mc-opt"><input type="radio" name="mc2" value="1" onchange="upd()"> b. everyone</label><label class="mc-opt"><input type="radio" name="mc2" value="2" onchange="upd()"> c. a lot of</label></div>
+
+  <div class="mc-q"><strong>4.</strong> She has ___ photos on her phone — over five thousand.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc3" value="0" onchange="upd()"> a. even</label><label class="mc-opt"><input type="radio" name="mc3" value="1" onchange="upd()"> b. everyone</label><label class="mc-opt"><input type="radio" name="mc3" value="2" onchange="upd()"> c. a lot of</label></div>
+
+  <div class="mc-q"><strong>5.</strong> The doctor will see you ___. Please wait here for a few minutes.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc4" value="0" onchange="upd()"> a. next week</label><label class="mc-opt"><input type="radio" name="mc4" value="1" onchange="upd()"> b. soon</label><label class="mc-opt"><input type="radio" name="mc4" value="2" onchange="upd()"> c. change</label></div>
+
+  <div class="mc-q"><strong>6.</strong> ___ the youngest student in the class passed the hardest test.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc5" value="0" onchange="upd()"> a. Everyone</label><label class="mc-opt"><input type="radio" name="mc5" value="1" onchange="upd()"> b. Even</label><label class="mc-opt"><input type="radio" name="mc5" value="2" onchange="upd()"> c. A lot of</label></div>
+
+  <div class="mc-q"><strong>7.</strong> The singer became ___ after her song was played on every radio station in the country.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc6" value="0" onchange="upd()"> a. easy</label><label class="mc-opt"><input type="radio" name="mc6" value="1" onchange="upd()"> b. famous</label><label class="mc-opt"><input type="radio" name="mc6" value="2" onchange="upd()"> c. known</label></div>
+
+  <div class="mc-q"><strong>8.</strong> We are moving to a new city ___, on the 14th.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc7" value="0" onchange="upd()"> a. soon</label><label class="mc-opt"><input type="radio" name="mc7" value="1" onchange="upd()"> b. next week</label><label class="mc-opt"><input type="radio" name="mc7" value="2" onchange="upd()"> c. every day</label></div>
+
+  <div class="mc-q"><strong>9.</strong> My little ___ always takes my things without asking.</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="mc8" value="0" onchange="upd()"> a. sister</label><label class="mc-opt"><input type="radio" name="mc8" value="1" onchange="upd()"> b. member</label><label class="mc-opt"><input type="radio" name="mc8" value="2" onchange="upd()"> c. brother</label></div>
+
+  <div class="mc-q"><strong>10.</strong> Things ___ fast in the modern world — what is popular today may not be popular tomorrow.</div>
+  <div class="mc-opts" style="margin-bottom:0"><label class="mc-opt"><input type="radio" name="mc9" value="0" onchange="upd()"> a. change</label><label class="mc-opt"><input type="radio" name="mc9" value="1" onchange="upd()"> b. happen</label><label class="mc-opt"><input type="radio" name="mc9" value="2" onchange="upd()"> c. understand</label></div>
+</div>
+
+<!-- EX 3: FILL — no word bank, must recall from memory -->
+<div class="exercise">
+  <div class="ex-header"><div><div class="ex-number">Exercise 3</div><div class="ex-title">Fill in the Blank – No Word Bank!</div></div><div class="ex-points">10 pts</div></div>
+  <div class="ex-instruction">Write the correct word. There is no word bank this time — you must remember the words yourself.</div>
+
+  <div class="q-row"><div class="q-num">1.</div><div class="q-text">I have <input class="iblank" id="f0" oninput="upd()" style="min-width:80px"> homework this week. I'll be busy every night.</div></div>
+  <div class="q-row"><div class="q-num">2.</div><div class="q-text">My older <input class="iblank" id="f1" oninput="upd()" style="min-width:90px"> taught me how to ride a bike.</div></div>
+  <div class="q-row"><div class="q-num">3.</div><div class="q-text">The rules will <input class="iblank" id="f2" oninput="upd()" style="min-width:80px"> starting Monday. Please read the new list.</div></div>
+  <div class="q-row"><div class="q-num">4.</div><div class="q-text">This question is not <input class="iblank" id="f3" oninput="upd()" style="min-width:80px"> — you have to think carefully.</div></div>
+  <div class="q-row"><div class="q-num">5.</div><div class="q-text"><input class="iblank" id="f4" oninput="upd()" style="min-width:80px"> the teacher could not solve the puzzle. That surprised us all.</div></div>
+  <div class="q-row"><div class="q-num">6.</div><div class="q-text">The principal asked <input class="iblank" id="f5" oninput="upd()" style="min-width:90px"> to be quiet. The whole school stopped talking.</div></div>
+  <div class="q-row"><div class="q-num">7.</div><div class="q-text">She is so <input class="iblank" id="f6" oninput="upd()" style="min-width:90px"> that people stop her on the street for photos.</div></div>
+  <div class="q-row"><div class="q-num">8.</div><div class="q-text">The match is <input class="iblank" id="f7" oninput="upd()" style="min-width:100px">, on Thursday. We need to practise.</div></div>
+  <div class="q-row"><div class="q-num">9.</div><div class="q-text">The bus will arrive <input class="iblank" id="f8" oninput="upd()" style="min-width:80px">. Wait at the stop.</div></div>
+  <div class="q-row"><div class="q-num">10.</div><div class="q-text">I don't <input class="iblank" id="f9" oninput="upd()" style="min-width:90px"> this grammar rule. Can you explain it again?</div></div>
+</div>
+
+<!-- EX 4: TRUE/FALSE — tricky, many near-misses -->
+<div class="exercise">
+  <div class="ex-header"><div><div class="ex-number">Exercise 4</div><div class="ex-title">True or False – Think Carefully!</div></div><div class="ex-points">10 pts</div></div>
+  <div class="ex-instruction">Some sentences look correct but are not. Read every word before you decide.</div>
+
+  <div class="tf-row" id="tf0"><div class="q-num">1.</div><div class="tf-stmt">"Everyone" and "every person" have the same meaning.</div><div class="tf-btns"><button class="tf-btn" id="tf0t" data-i="0" data-val="true">TRUE</button><button class="tf-btn" id="tf0f" data-i="0" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf1"><div class="q-num">2.</div><div class="tf-stmt">"Even" always means a number that can be divided by two, like 4 or 8.</div><div class="tf-btns"><button class="tf-btn" id="tf1t" data-i="1" data-val="true">TRUE</button><button class="tf-btn" id="tf1f" data-i="1" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf2"><div class="q-num">3.</div><div class="tf-stmt">If something is "easy", it does not require much effort.</div><div class="tf-btns"><button class="tf-btn" id="tf2t" data-i="2" data-val="true">TRUE</button><button class="tf-btn" id="tf2f" data-i="2" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf3"><div class="q-num">4.</div><div class="tf-stmt">"Soon" and "next week" always mean the same time.</div><div class="tf-btns"><button class="tf-btn" id="tf3t" data-i="3" data-val="true">TRUE</button><button class="tf-btn" id="tf3f" data-i="3" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf4"><div class="q-num">5.</div><div class="tf-stmt">You can say "a lot of time" and "a lot of books" — the phrase works with both people and things.</div><div class="tf-btns"><button class="tf-btn" id="tf4t" data-i="4" data-val="true">TRUE</button><button class="tf-btn" id="tf4f" data-i="4" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf5"><div class="q-num">6.</div><div class="tf-stmt">A sister and a brother are both called "siblings" in English.</div><div class="tf-btns"><button class="tf-btn" id="tf5t" data-i="5" data-val="true">TRUE</button><button class="tf-btn" id="tf5f" data-i="5" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf6"><div class="q-num">7.</div><div class="tf-stmt">"Famous" means the same as "important".</div><div class="tf-btns"><button class="tf-btn" id="tf6t" data-i="6" data-val="true">TRUE</button><button class="tf-btn" id="tf6f" data-i="6" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf7"><div class="q-num">8.</div><div class="tf-stmt">If you "understand" a text, you can explain what it means.</div><div class="tf-btns"><button class="tf-btn" id="tf7t" data-i="7" data-val="true">TRUE</button><button class="tf-btn" id="tf7f" data-i="7" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf8"><div class="q-num">9.</div><div class="tf-stmt">"Change" can be used as both a noun and a verb in English.</div><div class="tf-btns"><button class="tf-btn" id="tf8t" data-i="8" data-val="true">TRUE</button><button class="tf-btn" id="tf8f" data-i="8" data-val="false">FALSE</button></div></div>
+  <div class="tf-row" id="tf9"><div class="q-num">10.</div><div class="tf-stmt">"Everyone enjoyed the party" means that most, but not all, people enjoyed it.</div><div class="tf-btns"><button class="tf-btn" id="tf9t" data-i="9" data-val="true">TRUE</button><button class="tf-btn" id="tf9f" data-i="9" data-val="false">FALSE</button></div></div>
+</div>
+
+<!-- EX 5: WORD IN CONTEXT — explain meaning from sentence -->
+<div class="exercise">
+  <div class="ex-header"><div><div class="ex-number">Exercise 5</div><div class="ex-title">Word in Context</div></div><div class="ex-points">10 pts</div></div>
+  <div class="ex-instruction">Read each sentence. Explain what the underlined word means IN THIS SENTENCE. Use your own English words.</div>
+
+  <div class="q-row">
+    <div class="q-num">1.</div>
+    <div class="q-text"><em>"<u>Even</u> the principal came to watch the school play."</em><br>
+    What does <strong>even</strong> tell us here?<br>
+    <textarea class="rq-inp" id="ctx0" oninput="upd()" placeholder="It means that..." style="min-height:56px;margin-top:8px;"></textarea></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">2.</div>
+    <div class="q-text"><em>"She was so <u>famous</u> that she couldn't walk in the street without people recognising her."</em><br>
+    Write ONE other English word that could replace <strong>famous</strong> here.<br>
+    <input class="iblank" id="ctx1" oninput="upd()" style="min-width:160px;margin-top:8px;"></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">3.</div>
+    <div class="q-text"><em>"Things <u>change</u> — the school you love today may look very different in ten years."</em><br>
+    Is <strong>change</strong> a noun or a verb in this sentence? How do you know?<br>
+    <textarea class="rq-inp" id="ctx2" oninput="upd()" placeholder="It is a... because..." style="min-height:56px;margin-top:8px;"></textarea></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">4.</div>
+    <div class="q-text"><em>"<u>Everyone</u> was quiet when the teacher walked in."</em><br>
+    Rewrite this sentence using a different word instead of <strong>everyone</strong>.<br>
+    <textarea class="rq-inp" id="ctx3" oninput="upd()" placeholder="Rewrite: ..." style="min-height:56px;margin-top:8px;"></textarea></div>
+  </div>
+  <div class="q-row">
+    <div class="q-num">5.</div>
+    <div class="q-text"><em>"I have <u>a lot of</u> respect for her — she worked hard for everything she has."</em><br>
+    Can you replace <strong>a lot of</strong> with <strong>many</strong> here? Explain why or why not.<br>
+    <textarea class="rq-inp" id="ctx4" oninput="upd()" placeholder="Yes / No, because..." style="min-height:56px;margin-top:8px;"></textarea></div>
+  </div>
+</div>
+
+<!-- EX 6: WRITE SENTENCES — must use word in a specific way -->
+<div class="exercise">
+  <div class="ex-header"><div><div class="ex-number">Exercise 6</div><div class="ex-title">Write Sentences – With a Challenge!</div></div><div class="ex-points">10 pts</div></div>
+  <div class="ex-instruction">Write one sentence for each word. Follow the instruction in brackets — it must be true in your sentence!</div>
+
+  <div class="ws-row"><span class="ws-tag">famous</span> <span style="font-size:13px;color:var(--muted);">(mention a real person or place)</span><textarea class="ws-inp" id="ws0" oninput="upd()" placeholder="..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">everyone</span> <span style="font-size:13px;color:var(--muted);">(write a negative sentence)</span><textarea class="ws-inp" id="ws1" oninput="upd()" placeholder="Not everyone..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">even</span> <span style="font-size:13px;color:var(--muted);">(show something surprising)</span><textarea class="ws-inp" id="ws2" oninput="upd()" placeholder="Even..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">change</span> <span style="font-size:13px;color:var(--muted);">(use it as a noun)</span><textarea class="ws-inp" id="ws3" oninput="upd()" placeholder="The change..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">understand</span> <span style="font-size:13px;color:var(--muted);">(write a question)</span><textarea class="ws-inp" id="ws4" oninput="upd()" placeholder="Do you understand...?"></textarea></div>
+  <div class="ws-row"><span class="ws-tag">soon</span> <span style="font-size:13px;color:var(--muted);">(write about the future)</span><textarea class="ws-inp" id="ws5" oninput="upd()" placeholder="..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">a lot of</span> <span style="font-size:13px;color:var(--muted);">(use an uncountable noun)</span><textarea class="ws-inp" id="ws6" oninput="upd()" placeholder="a lot of time / money / water..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">next week</span> <span style="font-size:13px;color:var(--muted);">(write about something real in your life)</span><textarea class="ws-inp" id="ws7" oninput="upd()" placeholder="..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">easy</span> <span style="font-size:13px;color:var(--muted);">(write a negative sentence)</span><textarea class="ws-inp" id="ws8" oninput="upd()" placeholder="It is not easy..."></textarea></div>
+  <div class="ws-row"><span class="ws-tag">brother</span> <span style="font-size:13px;color:var(--muted);">(describe someone's character)</span><textarea class="ws-inp" id="ws9" oninput="upd()" placeholder="My brother / Her brother..."></textarea></div>
+</div>
+
+<!-- EX 7: READING -->
+<div class="exercise">
+  <div class="ex-header"><div><div class="ex-number">Exercise 7</div><div class="ex-title">Reading Comprehension</div></div><div class="ex-points">20 pts</div></div>
+  <div class="ex-instruction">Read carefully. The answers are not always written directly — sometimes you have to think.</div>
+
+  <div class="passage">
+    <p>Noa is thirteen years old. She lives in a small town where everyone knows each other. Her older brother, Avi, is a famous local singer. Noa is proud of him, but life is not always easy when your brother is famous. People stop her in the street and say: "Are you Avi's sister?" — even teachers do it. Sometimes she feels like she has no identity of her own.</p>
+    <p>Avi is planning to move to Tel Aviv next week to record his first album. He has already met a lot of new people in the music world. Noa does not understand why things have to change so fast. She knows she will miss him, but she also understands that she cannot stop him. "Things change," her mother says. "Soon you will have your own dream too."</p>
+    <p>Noa is not sure about that. But she decides to do one thing: she will find something she loves — something that is only hers — before next week. Something that has nothing to do with her famous brother.</p>
+  </div>
+
+  <p style="font-weight:700;color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Part A – Circle the correct answer (10 pts)</p>
+
+  <div class="mc-q"><strong>1.</strong> Why is life "not always easy" for Noa?</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="r0" value="0" onchange="upd()"> a. She does not like her brother.</label><label class="mc-opt"><input type="radio" name="r0" value="1" onchange="upd()"> b. People always connect her to Avi, not to herself.</label><label class="mc-opt"><input type="radio" name="r0" value="2" onchange="upd()"> c. She is moving to Tel Aviv.</label></div>
+
+  <div class="mc-q"><strong>2.</strong> What does "even teachers do it" mean in the text?</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="r1" value="0" onchange="upd()"> a. Teachers also teach Avi's songs.</label><label class="mc-opt"><input type="radio" name="r1" value="1" onchange="upd()"> b. It is surprising that even teachers stop her to ask about Avi.</label><label class="mc-opt"><input type="radio" name="r1" value="2" onchange="upd()"> c. Teachers are also famous in the town.</label></div>
+
+  <div class="mc-q"><strong>3.</strong> Why is Avi moving to Tel Aviv?</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="r2" value="0" onchange="upd()"> a. He wants to live near Noa's school.</label><label class="mc-opt"><input type="radio" name="r2" value="1" onchange="upd()"> b. He is recording his first album.</label><label class="mc-opt"><input type="radio" name="r2" value="2" onchange="upd()"> c. He does not like the small town.</label></div>
+
+  <div class="mc-q"><strong>4.</strong> What does Noa decide to do at the end?</div>
+  <div class="mc-opts"><label class="mc-opt"><input type="radio" name="r3" value="0" onchange="upd()"> a. Move to Tel Aviv with Avi.</label><label class="mc-opt"><input type="radio" name="r3" value="1" onchange="upd()"> b. Ask her mother for help.</label><label class="mc-opt"><input type="radio" name="r3" value="2" onchange="upd()"> c. Find something she loves that belongs to her alone.</label></div>
+
+  <div class="mc-q" style="margin-bottom:0"><strong>5.</strong> What does Noa's mother mean when she says "Soon you will have your own dream too"?</div>
+  <div class="mc-opts" style="margin-bottom:16px"><label class="mc-opt"><input type="radio" name="r4" value="0" onchange="upd()"> a. Noa should copy Avi's dream.</label><label class="mc-opt"><input type="radio" name="r4" value="1" onchange="upd()"> b. In time, Noa will find something she is passionate about.</label><label class="mc-opt"><input type="radio" name="r4" value="2" onchange="upd()"> c. Noa needs to move away from the town.</label></div>
+
+  <p style="font-weight:700;color:var(--navy);font-size:13px;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Part B – Answer in full sentences (10 pts)</p>
+
+  <div class="rq-row"><div class="rq-q">1. In your own words: why does Noa feel she has "no identity of her own"?</div><textarea class="rq-inp" id="rq0" oninput="upd()" placeholder="Noa feels..."></textarea></div>
+  <div class="rq-row"><div class="rq-q">2. Find THREE words from the unit word list in the story. Write each word and the sentence it appears in.</div><textarea class="rq-inp" id="rq1" oninput="upd()" placeholder="Word 1: ... → Sentence: ..." style="min-height:90px;"></textarea></div>
+  <div class="rq-row"><div class="rq-q">3. Do you think Noa's feelings are understandable? Why or why not? Write at least 3 sentences.</div><textarea class="rq-inp" id="rq2" oninput="upd()" placeholder="I think..." style="min-height:80px;"></textarea></div>
+  <div class="rq-row"><div class="rq-q">4. What do you think Noa will choose to do? Use your imagination and write 2–3 sentences.</div><textarea class="rq-inp" id="rq3" oninput="upd()" placeholder="I think Noa will..." style="min-height:80px;"></textarea></div>
+  <div class="rq-row"><div class="rq-q">5. The story uses the word "change" twice. Find both uses and explain how the meaning is the same or different.</div><textarea class="rq-inp" id="rq4" oninput="upd()" placeholder="First use: ... Second use: ..." style="min-height:80px;"></textarea></div>
+</div>
+
+<!-- Score -->
+<div class="score-sum" id="score-sum">
+  <div class="big-score" id="final-num">0</div>
+  <div class="score-lbl">out of 100 points</div>
+  <div class="sbars" id="sbars"></div>
+</div>
+
+<!-- Actions -->
+<div class="action-bar">
+  <h2>Submit &amp; Share</h2>
+  <p>Done? Check your answers or send to your teacher.</p>
+  <div class="email-row">
+    <input class="email-inp" id="eto" type="email" placeholder="Teacher's email" autocomplete="email">
+    <button class="btn btn-sec" style="width:auto;padding:12px 18px" id="btn-addemail">+ Add</button>
+  </div>
+  <div id="etags"></div>
+  <div class="action-btns">
+    <button class="btn btn-primary" id="btn-check">✓ Check Answers</button>
+    <button class="btn btn-green" id="btn-send">✉ Send by Email</button>
+    <button class="btn btn-gold" id="btn-print">🖨 Print</button>
+    <button class="btn btn-sec" id="btn-reset">↺ Reset</button>
+  </div>
+</div>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Answers ──────────────────────────────────────────────────────────
+const mAns=[
+  "known by many people around the world",
+  "happening in a short time from now",
+  "a male who has the same parents as you",
+  "not difficult at all",
+  "used to say something surprising is included",
+  "every single person",
+  "a large number or amount of something",
+  "the week that comes after this one",
+  "to get the meaning of something",
+  "to become or make something different"
+];
+const cAns=[1,2,0,2,1,1,1,1,2,0];
+const fAns=["a lot of","brother","change","easy","even","everyone","famous","next week","soon","understand"];
+const tfAns=[true,false,true,false,true,true,false,true,true,false];
+const rAns=[1,1,1,2,1];
+const tfState={};
+const emails=[];
+
+function selTF(i,val){
+  tfState[i]=val;
+  document.getElementById('tf'+i+'t').className='tf-btn'+(val===true?' sel-t':'');
+  document.getElementById('tf'+i+'f').className='tf-btn'+(val===false?' sel-f':'');
+  upd();
+}
+function g(id){return document.getElementById(id);}
+function val(id){return(g(id)?.value||'').trim().toLowerCase().replace(/['']/g,"'");}
+
+function calcScore(){
+  let t=0,b={};
+  let s1=0; mAns.forEach((a,i)=>{if(g('m'+i)?.value===a)s1++;}); b.ex1=s1; t+=s1;
+  let s2=0; cAns.forEach((a,i)=>{const s=document.querySelector('input[name="mc'+i+'"]:checked');if(s&&+s.value===a)s2++;}); b.ex2=s2; t+=s2;
+  let s3=0; fAns.forEach((a,i)=>{if(val('f'+i)===a)s3++;}); b.ex3=s3; t+=s3;
+  let s4=0; tfAns.forEach((a,i)=>{if(tfState[i]===a)s4++;}); b.ex4=s4; t+=s4;
+  // Ex5 context – count non-empty (open)
+  let s5=0; for(let i=0;i<5;i++){const v=(g('ctx'+i)?.value||g('ctx'+i)?.value||'');if(v&&v.trim().length>3)s5+=2;} b.ex5=Math.min(s5,10); t+=b.ex5;
+  // Ex6 write – count non-empty
+  let s6=0; for(let i=0;i<10;i++){if((g('ws'+i)?.value||'').trim().length>5)s6++;} b.ex6=s6; t+=s6;
+  // Ex7 reading MC
+  let s7mc=0; rAns.forEach((a,i)=>{const s=document.querySelector('input[name="r'+i+'"]:checked');if(s&&+s.value===a)s7mc++;});
+  b.ex7mc=s7mc*2; t+=b.ex7mc;
+  // Ex7 open
+  let s7q=0; for(let i=0;i<5;i++){if((g('rq'+i)?.value||'').trim().length>5)s7q+=2;} b.ex7q=Math.min(s7q,10); t+=b.ex7q;
+  return{total:Math.min(t,100),b};
+}
+
+function upd(){
+  g('live-score').textContent='Score: '+calcScore().total+' / 100';
+}
+
+function checkAll(){
+  const{total,b}=calcScore();
+  mAns.forEach((a,i)=>{const el=g('m'+i);if(!el||!el.value)return;el.className='match-select '+(el.value===a?'ok':'bad');});
+  fAns.forEach((a,i)=>{const el=g('f'+i);if(!el||!el.value)return;el.className='iblank '+(val('f'+i)===a?'ok':'bad');});
+  cAns.forEach((a,i)=>{document.querySelectorAll('input[name="mc'+i+'"]').forEach((inp,j)=>{const lbl=inp.closest('.mc-opt');if(j===a)lbl.style.background='#e6f9ee';else if(inp.checked)lbl.style.background='#fde8e8';});});
+  tfAns.forEach((a,i)=>{if(tfState[i]===undefined)return;const r=g('tf'+i);r.style.background=tfState[i]===a?'#e6f9ee':'#fde8e8';r.style.borderRadius='8px';});
+  rAns.forEach((a,i)=>{document.querySelectorAll('input[name="r'+i+'"]').forEach((inp,j)=>{const lbl=inp.closest('.mc-opt');if(j===a)lbl.style.background='#e6f9ee';else if(inp.checked)lbl.style.background='#fde8e8';});});
+  const sum=g('score-sum'); sum.classList.add('show');
+  g('final-num').textContent=total;
+  const labels=['Ex1 Match','Ex2 MC','Ex3 Fill','Ex4 T/F','Ex5 Context','Ex6 Write','Ex7 Reading MC','Ex7 Reading Q'];
+  const maxes=[10,10,10,10,10,10,10,10];
+  const vals=[b.ex1,b.ex2,b.ex3,b.ex4,b.ex5,b.ex6,b.ex7mc,b.ex7q];
+  g('sbars').innerHTML=vals.map((v,i)=>`<div><div class="sb-lbl">${labels[i]}: ${v}/${maxes[i]}</div><div class="sb-track"><div class="sb-fill" style="width:${v/maxes[i]*100}%"></div></div></div>`).join('');
+  sum.scrollIntoView({behavior:'smooth',block:'start'});
+  toast('✓ Score: '+total+'/100');
+}
+
+function addEmail(){
+  const inp=g('eto'),v=inp.value.trim();
+  if(!v||!v.includes('@')){toast('Enter a valid email');return;}
+  if(emails.includes(v)){toast('Already added');return;}
+  emails.push(v);inp.value='';
+  g('etags').innerHTML=emails.map(e=>`<span class="etag">${e}<button onclick="removeEmail('${e}')">×</button></span>`).join('');
+}
+function removeEmail(e){emails.splice(emails.indexOf(e),1);g('etags').innerHTML=emails.map(e=>`<span class="etag">${e}<button onclick="removeEmail('${e}')">×</button></span>`).join('');}
+
+function sendEmail(){
+  const name=g('sname').value||'Student',cls=g('sclass').value||'';
+  const{total}=calcScore();
+  let body=`Unit 1 Advanced Workbook\nName: ${name}${cls?' | Class: '+cls:''}\nScore: ${total}/100\n\n`;
+  fAns.forEach((_,i)=>{body+=`Fill ${i+1}: ${g('f'+i)?.value||'(blank)'}\n`;});
+  const subj=encodeURIComponent(`Unit 1 Advanced – ${name}${cls?' ('+cls+')':''} – ${total}/100`);
+  window.location.href=`mailto:${emails.join(',')}?subject=${subj}&body=${encodeURIComponent(body)}`;
+  toast('✉ Opening email...');
+}
+
+function toast(msg){const t=g('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+// ── Init ──────────────────────────────────────────────────────────────
+document.getElementById('sdate').valueAsDate=new Date();
+
+document.querySelectorAll('.tf-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){selTF(parseInt(this.dataset.i),this.dataset.val==='true');});
+  btn.addEventListener('touchend',function(e){e.preventDefault();selTF(parseInt(this.dataset.i),this.dataset.val==='true');});
+});
+var bc=g('btn-check'); if(bc){bc.addEventListener('click',checkAll);bc.addEventListener('touchend',function(e){e.preventDefault();checkAll();});}
+var bs=g('btn-send'); if(bs){bs.addEventListener('click',sendEmail);bs.addEventListener('touchend',function(e){e.preventDefault();sendEmail();});}
+var br=g('btn-reset'); if(br){br.addEventListener('click',function(){if(confirm('Reset all answers?'))location.reload();});br.addEventListener('touchend',function(e){e.preventDefault();if(confirm('Reset all answers?'))location.reload();});}
+var bp=g('btn-print'); if(bp){bp.addEventListener('click',function(){window.print();});}
+var ba=g('btn-addemail'); if(ba){ba.addEventListener('click',addEmail);ba.addEventListener('touchend',function(e){e.preventDefault();addEmail();});}
+</script>
+</body>
+</html>
